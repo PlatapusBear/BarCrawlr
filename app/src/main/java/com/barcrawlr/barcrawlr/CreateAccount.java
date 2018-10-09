@@ -6,39 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class LoginActivty extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
     EditText username;
     EditText password;
-    TextView newUser;
-    Button loginButton;
+    EditText reenter;
+    Button createAccount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_activty);
+        setContentView(R.layout.activity_create_account);
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
-        newUser = (TextView) findViewById(R.id.newUser);
-        loginButton = (Button) findViewById(R.id.login_button);
+        reenter = (EditText) findViewById(R.id.reenter);
+        createAccount = (Button) findViewById(R.id.createAccount);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        newUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CreateAccount.class);
                 startActivity(intent);
             }
         });
