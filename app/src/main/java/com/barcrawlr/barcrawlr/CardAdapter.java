@@ -45,7 +45,6 @@ public class CardAdapter extends BaseAdapter {
         ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            // inflate UI from XML file
             convertView = inflater.inflate(R.layout.info_card, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);

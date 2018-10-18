@@ -15,17 +15,4 @@
         android:layout_height="500dp"
         app:stack_rotation="0" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:id="@+id/empty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
-
-    </RelativeLayout>
-
 </RelativeLayout>

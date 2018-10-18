@@ -1,7 +1,11 @@
 package com.barcrawlr.barcrawlr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import link.fls.swipestack.SwipeStack;
 import java.util.ArrayList;
 
@@ -52,4 +56,26 @@ public class MainActivity extends AppCompatActivity {
         cardAdapter = new CardAdapter(this,cdInfo);
         cardStack.setAdapter(cardAdapter);
     }
-}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.barlistbutton, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.barlist) {
+            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    //ADD ONCE BAR LIST PAGE IS IN
+                    //Intent intent = new Intent(MainActivity.this,AchievementPage.class);
+                    //startActivity(intent);
+                    return true;
+                }
+            });
+            }
+        return super.onOptionsItemSelected(item);
+        }
+    }
