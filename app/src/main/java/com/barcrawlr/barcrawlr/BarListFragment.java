@@ -36,20 +36,30 @@ public class BarListFragment extends Fragment {
         barList = (RecyclerView)view.findViewById(R.id.bar_list);
 
         Bar bar1 = new Bar();
-        bar1.setName("Tango");
-        bar1.setAttended(true);
+        bar1.setName("Ingersoll Tap");
+        bar1.setAttended(false);
 
         Bar bar2 = new Bar();
-        bar2.setName("Charlie");
+        bar2.setName("Juniper Moon");
         bar2.setAttended(false);
 
         Bar bar3 = new Bar();
-        bar3.setName("Foxtrot");
+        bar3.setName("Star Bar");
         bar3.setAttended(false);
+
+        Bar bar4 = new Bar();
+        bar4.setName("Wellman's Pub");
+        bar4.setAttended(false);
+
+        Bar bar5 = new Bar();
+        bar5.setName("Zimm's Food and Spirits");
+        bar5.setAttended(false);
 
         bars.add(bar1);
         bars.add(bar2);
         bars.add(bar3);
+        bars.add(bar4);
+        bars.add(bar5);
 
         layoutManager = new LinearLayoutManager(getContext());
         barList.setLayoutManager(layoutManager);
