@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/barprofile"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="400dp"
             android:layout_marginBottom="75dp"
             android:contentDescription="@null"
             android:scaleType="fitXY" />
@@ -27,6 +27,7 @@
             android:layout_gravity="bottom"
             android:gravity="center|start"
             android:orientation="vertical"
+            android:background="#59000000"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
@@ -34,7 +35,8 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -42,7 +44,8 @@
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/colorAccent"
                 android:textSize="14sp"
                 android:textStyle="normal" />
         </LinearLayout>

@@ -13,6 +13,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:layout_centerInParent="true"
         app:stack_rotation="0" />
 
 </RelativeLayout>
