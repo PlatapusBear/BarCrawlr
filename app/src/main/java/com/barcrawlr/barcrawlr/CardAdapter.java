@@ -60,15 +60,30 @@ public class CardAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private Bitmap decodeBitmapResource(Resources resources, int drawableId, int i, int i1) {
+    private Bitmap decodeBitmapResource(Resources resources, int drawableId, int widthReq, int heightReq) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(resources,drawableId,options);
-        //
+        options.inSampleSize = calcInSampleSize(options, widthReq, heightReq);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(resources, drawableId, options);
     }
 
+    public static int calcInSampleSize(BitmapFactory.Options options, int widthReq, int heighReq) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height > heighReq || width > widthReq) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            while ((halfHeight / inSampleSize) >= heighReq
+                    && (halfWidth / inSampleSize) >= widthReq) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
 
     private class ViewHolder{
         private ImageView barProfile;

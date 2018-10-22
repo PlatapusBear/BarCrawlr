@@ -52,15 +52,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home) {
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    //ADD ONCE BAR LIST PAGE IS IN
-                    Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-            });
+            Intent intent = new Intent(ProfileActivity.this,MainActivity.class);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private void setCardStackAdapter() {
         cdInfo = new ArrayList<>();
 
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Ingersoll Tap","Distance Away"));
+        cdInfo.add(new CardInfo(R.drawable.ingersoll_tap,"Ingersoll Tap","Distance Away"));
         cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Juniper Moon","Distance Away"));
         cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Star Bar","Distance Away"));
         cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Zimm's Food and Spirits","Distance Away"));
@@ -84,15 +84,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.barlist) {
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
-                    startActivity(intent);
-                    return true;
+            Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
+            startActivity(intent);
+            return true;
                 }
-            });
-            }
         return super.onOptionsItemSelected(item);
         }
     }

@@ -28,7 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="TextView"
+        android:textColor="@color/text_color_primary"
         app:layout_constraintStart_toEndOf="@+id/achievement_image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto_thin"
         android:text="TextView"
+        android:textColor="@color/text_color_primary"
         app:layout_constraintStart_toEndOf="@+id/achievement_image"
         app:layout_constraintTop_toBottomOf="@+id/achievement_text" />
 </android.support.constraint.ConstraintLayout>
