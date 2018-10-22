@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     //ADD ONCE BAR LIST PAGE IS IN
-                    //Intent intent = new Intent(MainActivity.this,AchievementPage.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
+                    startActivity(intent);
                     return true;
                 }
             });
