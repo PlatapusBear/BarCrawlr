@@ -23,11 +23,13 @@ public class AchievmentAdapter extends RecyclerView.Adapter<AchievmentAdapter.Ac
     public static class AchievementViewHolder extends RecyclerView.ViewHolder{
         public TextView nameView;
         public ImageView imageView;
+        public TextView descriptionView;
 
         public AchievementViewHolder(View v) {
             super(v);
             nameView = v.findViewById(R.id.achievement_text);
             imageView = v.findViewById(R.id.achievement_image);
+            descriptionView = v.findViewById(R.id.achievement_description);
         }
     }
 
@@ -47,6 +49,7 @@ public class AchievmentAdapter extends RecyclerView.Adapter<AchievmentAdapter.Ac
     public void onBindViewHolder(AchievementViewHolder holder, int position){
         holder.nameView.setText(achievments.get(position).getName());
         holder.imageView.setImageBitmap(achievments.get(position).getImage());
+        holder.descriptionView.setText(achievments.get(position).getDescription());
     }
 
 
