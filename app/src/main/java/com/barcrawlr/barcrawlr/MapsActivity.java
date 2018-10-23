@@ -163,7 +163,7 @@ LocationListener{
     }
 
 
-  /**  public void onClick(View v)
+ /**  public void onClick(View v)
     {
         Object dataTransfer[] = new Object[2];
         GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
