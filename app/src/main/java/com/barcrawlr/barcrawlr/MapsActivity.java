@@ -62,6 +62,28 @@ LocationListener{
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+
+        Object dataTransfer[] = new Object[2];
+        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+
+
+
+        mMap.clear();
+        String bar = "bar";
+
+
+        String name = getIntent().getStringExtra("bar");
+        String url = getUrl(latitude, longitude, bar, name);
+        dataTransfer[0] = mMap;
+        dataTransfer[1] = url;
+
+        getNearbyPlacesData.execute(dataTransfer);
+        Toast.makeText(MapsActivity.this, "Showing Nearby Bar", Toast.LENGTH_SHORT).show();
+
+
+
     }
 
     @Override
@@ -140,7 +162,8 @@ LocationListener{
         }
     }
 
-    public void onClick(View v)
+
+  /**  public void onClick(View v)
     {
         Object dataTransfer[] = new Object[2];
         GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
@@ -149,12 +172,13 @@ LocationListener{
         {
 
             case R.id.B_bars:
+
                 mMap.clear();
-                String resturant = "bar";
+                String bar = "bar";
 
 
                 String name = getIntent().getStringExtra("bar");
-                String url = getUrl(latitude, longitude, resturant, name);
+                String url = getUrl(latitude, longitude, bar, name);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
 
@@ -165,7 +189,7 @@ LocationListener{
         }
     }
 
-
+**/
     private String getUrl(double latitude , double longitude , String nearbyPlace, String name)
     {
 
