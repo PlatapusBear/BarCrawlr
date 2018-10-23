@@ -147,81 +147,33 @@ LocationListener{
 
         switch(v.getId())
         {
-            case R.id.B_search:
-                EditText tf_location =  findViewById(R.id.TF_location);
-                String location = tf_location.getText().toString();
-                List<Address> addressList;
 
-
-                if(!location.equals(""))
-                {
-                    Geocoder geocoder = new Geocoder(this);
-
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 5);
-
-                        if(addressList != null)
-                        {
-                            for(int i = 0;i<addressList.size();i++)
-                            {
-                                LatLng latLng = new LatLng(addressList.get(i).getLatitude() , addressList.get(i).getLongitude());
-                                MarkerOptions markerOptions = new MarkerOptions();
-                                markerOptions.position(latLng);
-                                markerOptions.title(location);
-                                mMap.addMarker(markerOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-                            }
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            case R.id.B_hospitals:
-                mMap.clear();
-                String hospital = "hospital";
-                String url = getUrl(latitude, longitude, hospital);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Bars", Toast.LENGTH_SHORT).show();
-                break;
-
-
-            case R.id.B_schools:
-                mMap.clear();
-                String school = "school";
-                url = getUrl(latitude, longitude, school);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Schools", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.B_bars:
                 mMap.clear();
                 String resturant = "bar";
-                url = getUrl(latitude, longitude, resturant);
+
+
+                String name = getIntent().getStringExtra("bar");
+                String url = getUrl(latitude, longitude, resturant, name);
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
 
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Restaurants", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this, "Showing Nearby Bar", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.B_to:
+
         }
     }
 
 
-    private String getUrl(double latitude , double longitude , String nearbyPlace)
+    private String getUrl(double latitude , double longitude , String nearbyPlace, String name)
     {
 
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlaceUrl.append("location="+latitude+","+longitude);
         googlePlaceUrl.append("&radius="+PROXIMITY_RADIUS);
         googlePlaceUrl.append("&type="+nearbyPlace);
+        googlePlaceUrl.append("&name="+name);
         googlePlaceUrl.append("&sensor=true");
         googlePlaceUrl.append("&key="+"AIzaSyDRG63BCRlsXMnX30YRcOKNM0zdeJl0x78");
 
