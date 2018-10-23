@@ -1,4 +1,4 @@
-package com.example.priyanka.mapsdemo;
+package com.barcrawlr.barcrawlr;
 import android.util.Log;
 
 import java.io.BufferedReader;

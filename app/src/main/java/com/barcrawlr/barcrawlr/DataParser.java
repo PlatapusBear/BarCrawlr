@@ -1,4 +1,4 @@
-package com.example.priyanka.mapsdemo;
+package com.barcrawlr.barcrawlr;
 
 import java.util.HashMap;
 import android.util.Log;

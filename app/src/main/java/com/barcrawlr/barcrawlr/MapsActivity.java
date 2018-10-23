@@ -1,4 +1,4 @@
-package com.example.priyanka.mapsdemo;
+package com.barcrawlr.barcrawlr;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
