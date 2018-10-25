@@ -7,11 +7,12 @@ public class CardInfo {
     private String location;
     private String price;
 
-    public CardInfo(int drawableId, String name, String location, String price) {
+  
+    public CardInfo(int drawableId, String name, String location) {
         this.drawableId = drawableId;
         this.name = name;
         this.location = location;
-        this.price = price;
+
     }
 
     public int getDrawableId() {
@@ -34,9 +35,4 @@ public class CardInfo {
         return location;
     }
 
-    public String getPrice(){return price;}
-
-    public String setPrice(String price){this.price=price;
-        return price;
-    }
 }
