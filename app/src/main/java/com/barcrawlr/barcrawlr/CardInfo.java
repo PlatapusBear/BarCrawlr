@@ -5,8 +5,9 @@ public class CardInfo {
     private int drawableId;
     private String name;
     private String location;
+    private String price;
 
-
+  
     public CardInfo(int drawableId, String name, String location) {
         this.drawableId = drawableId;
         this.name = name;

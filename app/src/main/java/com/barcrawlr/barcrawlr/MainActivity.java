@@ -108,10 +108,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToRight(int position) {
 
-                //Bundle extras = new Bundle();
-                //Intent intent = new Intent(MainActivity.this,xxx.class);
-                //extras.putString("NAME",cardAdapter.getItem(position).getName());
-                //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                Bundle extras = new Bundle();
+               // Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                extras.putString("NAME",cardAdapter.getItem(position).getName());
+                extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
+                //extras.putByte(cardAdapter.decode);
                 //intent.putExtras(extras);
                 //startActivity(intent);
                 if (currentPosition == (cdInfo.size() - 1)) {
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setCardStackAdapter() {
         cdInfo = new ArrayList<>();
+
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST_CODE);

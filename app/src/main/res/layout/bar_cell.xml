@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:clickable="true"
+    android:clickable="false"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="?android:selectableItemBackground">
@@ -16,7 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="name_view"
+        android:textColor="@color/text_color_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +26,11 @@
         android:id="@+id/attended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="attended"
+        android:textColor="@color/text_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
