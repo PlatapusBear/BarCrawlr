@@ -6,10 +6,12 @@ public class CardInfo {
     private String name;
     private String location;
 
+
     public CardInfo(int drawableId, String name, String location) {
         this.drawableId = drawableId;
         this.name = name;
         this.location = location;
+
     }
 
     public int getDrawableId() {
@@ -31,4 +33,5 @@ public class CardInfo {
     public String getLocation() {
         return location;
     }
+
 }
