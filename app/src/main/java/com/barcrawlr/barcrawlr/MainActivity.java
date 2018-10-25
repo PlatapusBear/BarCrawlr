@@ -41,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToRight(int position) {
 
-                //Bundle extras = new Bundle();
-                //Intent intent = new Intent(MainActivity.this,xxx.class);
-                //extras.putString("NAME",cardAdapter.getItem(position).getName());
-                //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                Bundle extras = new Bundle();
+               // Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                extras.putString("NAME",cardAdapter.getItem(position).getName());
+                extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
+                //extras.putByte(cardAdapter.decode);
                 //intent.putExtras(extras);
                 //startActivity(intent);
                 if (currentPosition == (cdInfo.size()-1)){
@@ -65,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
     private void setCardStackAdapter() {
         cdInfo = new ArrayList<>();
 
-        cdInfo.add(new CardInfo(R.drawable.ingersoll_tap,"Ingersoll Tap","Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Juniper Moon","Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Star Bar","Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Zimm's Food and Spirits","Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background,"Wellman's Pub","Distance Away"));
+        cdInfo.add(new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","Distance Away","$$"));
+        cdInfo.add(new CardInfo(R.drawable.junipermoon,"Juniper Moon","Distance Away","$$"));
+        cdInfo.add(new CardInfo(R.drawable.starbar,"Star Bar","Distance Away","$$"));
+        cdInfo.add(new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits","Distance Away","$$"));
+        cdInfo.add(new CardInfo(R.drawable.wellmanspub,"Wellman's Pub","Distance Away","$$"));
 
         cardAdapter = new CardAdapter(this,cdInfo);
         cardStack.setAdapter(cardAdapter);
