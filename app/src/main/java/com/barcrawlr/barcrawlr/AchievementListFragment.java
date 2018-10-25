@@ -43,8 +43,9 @@ public class AchievementListFragment extends Fragment {
         Achievement achievement5 = new Achievement();
         Achievement achievement6 = new Achievement();
 
-        Bitmap image1 = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.emptybox);
-        Bitmap image2 = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.checkbox);
+        Bitmap image1 = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.incompleteachievement);
+        Bitmap image2 = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.achievementcompleted);
+        Bitmap image3 = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.mysteryachievement);
 
         achievement1.setName("Choosy");
         achievement1.setImage(image1);
@@ -67,7 +68,7 @@ public class AchievementListFragment extends Fragment {
         achievement5.setDescription("Visit the same bar three times");
 
         achievement6.setName("???");
-        achievement6.setImage(image1);
+        achievement6.setImage(image3);
         achievement6.setDescription("Keeps swiping to unlock mystery achievements!");
 
         achievements.add(achievement1);
