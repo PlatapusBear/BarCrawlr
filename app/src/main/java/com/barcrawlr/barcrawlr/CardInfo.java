@@ -7,11 +7,11 @@ public class CardInfo {
     private String location;
     private String price;
 
-  
-    public CardInfo(int drawableId, String name, String location) {
+    public CardInfo(int drawableId, String name, String location, String price) {
         this.drawableId = drawableId;
         this.name = name;
         this.location = location;
+        this.price = price;
 
     }
 
@@ -31,8 +31,13 @@ public class CardInfo {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() { return location; }
+
+    public void setLocation(String location) { this.location = location; }
+
+    public String getPrice() { return price; }
+
+    public void setPrice(String price) { this.price = price; }
+
 
 }

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Location location1;
     private LocationManager locationManager;
 
-    private ArrayList<CardInfo> cdInfo;
+    private ArrayList<CardInfo> bars;
     private FusedLocationProviderClient mFusedLocationClient;
 
     private int currentPosition;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToLeft(int position) {
 
-                if (currentPosition == (cdInfo.size() - 1)) {
+                if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
                     currentPosition = 0;
                 }
@@ -108,15 +108,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToRight(int position) {
 
-                Bundle extras = new Bundle();
-               // Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
-                extras.putString("NAME",cardAdapter.getItem(position).getName());
-                extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
-                extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
-                //extras.putByte(cardAdapter.decode);
+               // Bundle extras = new Bundle();
+                //CardInfo bar = (CardInfo)bars.get(position);
+                //Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                //intent.putExtra("BARINFO",(Serializable)bar);
+
+                //extras.putString("NAME",cardAdapter.getItem(position).getName());
+                //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                //extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
                 //intent.putExtras(extras);
                 //startActivity(intent);
-                if (currentPosition == (cdInfo.size() - 1)) {
+                if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
                     currentPosition = 0;
                 }
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setCardStackAdapter() {
-        cdInfo = new ArrayList<>();
+        bars = new ArrayList<>();
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -169,13 +171,13 @@ public class MainActivity extends AppCompatActivity {
             Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
             location1 = location;
         }
-        cdInfo.add(new CardInfo(R.drawable.ingersoll_tap, "Ingersoll Tap", distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558)));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background, "Juniper Moon", "Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background, "Star Bar", "Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background, "Zimm's Food and Spirits", "Distance Away"));
-        cdInfo.add(new CardInfo(R.drawable.ic_launcher_background, "Wellman's Pub", "Distance Away"));
+        bars.add(new CardInfo(R.drawable.ingersolltap, "Ingersoll Tap", distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$"));
+        bars.add(new CardInfo(R.drawable.junipermoon, "Juniper Moon", "Distance Away","$$"));
+        bars.add(new CardInfo(R.drawable.starbar, "Star Bar", "Distance Away","$$"));
+        bars.add(new CardInfo(R.drawable.zimms, "Zimm's Food and Spirits", "Distance Away","$"));
+        bars.add(new CardInfo(R.drawable.wellmanspub, "Wellman's Pub", "Distance Away","$"));
 
-        cardAdapter = new CardAdapter(this, cdInfo);
+        cardAdapter = new CardAdapter(this, bars);
         cardStack.setAdapter(cardAdapter);
     }
 
