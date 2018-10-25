@@ -54,6 +54,7 @@ public class CardAdapter extends BaseAdapter {
 
         holder.name.setText(getItem(position).getName());
         holder.location.setText(getItem(position).getLocation());
+        holder.price.setText(getItem(position).getPrice());
         holder.barProfile.setImageBitmap(decodeBitmapResource(activity.getResources(),
                 getItem(position).getDrawableId(),150,300));
 
@@ -89,11 +90,13 @@ public class CardAdapter extends BaseAdapter {
         private ImageView barProfile;
         private TextView name;
         private TextView location;
+        private TextView price;
 
         public ViewHolder(View view) {
             barProfile = (ImageView)view.findViewById(R.id.barprofile);
             name = (TextView)view.findViewById(R.id.name);
             location = (TextView)view.findViewById(R.id.location);
+            price = (TextView)view.findViewById(R.id.price);
         }
     }
 
