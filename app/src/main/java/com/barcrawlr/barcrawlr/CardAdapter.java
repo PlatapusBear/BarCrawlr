@@ -49,6 +49,8 @@ public class CardAdapter extends BaseAdapter {
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
+           //reuse view
+            //getTag to access all individual view data
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -57,15 +59,18 @@ public class CardAdapter extends BaseAdapter {
         holder.price.setText(getItem(position).getPrice());
         holder.barProfile.setImageBitmap(decodeBitmapResource(activity.getResources(),
                 getItem(position).getDrawableId(),150,300));
-
         return convertView;
     }
 
     private Bitmap decodeBitmapResource(Resources resources, int drawableId, int widthReq, int heightReq) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
+        //allows caller to query the bitmap without having to allocate the memory for its pixels
         options.inJustDecodeBounds = true;
+        //decode object resID to bitmap
         BitmapFactory.decodeResource(resources,drawableId,options);
+        //scales down size of large image
         options.inSampleSize = calcInSampleSize(options, widthReq, heightReq);
+        //save bitmap
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(resources, drawableId, options);
     }
