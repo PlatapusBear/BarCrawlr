@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 
 import link.fls.swipestack.SwipeStack;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -108,16 +109,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToRight(int position) {
 
-               // Bundle extras = new Bundle();
-                //CardInfo bar = (CardInfo)bars.get(position);
-                //Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
-                //intent.putExtra("BARINFO",(Serializable)bar);
-
-                //extras.putString("NAME",cardAdapter.getItem(position).getName());
-                //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
-                //extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
-                //intent.putExtras(extras);
-                //startActivity(intent);
+                CardInfo bar = (CardInfo)bars.get(position);
+                Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                intent.putExtra("BARINFO",(Serializable)bar);
+                startActivity(intent);
                 if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
                     currentPosition = 0;
@@ -171,11 +166,24 @@ public class MainActivity extends AppCompatActivity {
             Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
             location1 = location;
         }
-        bars.add(new CardInfo(R.drawable.ingersolltap, "Ingersoll Tap", distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$"));
-        bars.add(new CardInfo(R.drawable.junipermoon, "Juniper Moon", "Distance Away","$$"));
-        bars.add(new CardInfo(R.drawable.starbar, "Star Bar", "Distance Away","$$"));
-        bars.add(new CardInfo(R.drawable.zimms, "Zimm's Food and Spirits", "Distance Away","$"));
-        bars.add(new CardInfo(R.drawable.wellmanspub, "Wellman's Pub", "Distance Away","$"));
+
+        /*CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$");
+        bars.add(bar1);
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$");
+        bars.add(bar2);
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"$$");
+        bars.add(bar3);
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$");
+        bars.add(bar4);
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$");
+        bars.add(bar5);*/
+
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","hh","$");
+        bars.add(bar1);
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","hh","$$");
+        bars.add(bar2);
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar", "hh","$$");
+        bars.add(bar3);
 
         cardAdapter = new CardAdapter(this, bars);
         cardStack.setAdapter(cardAdapter);

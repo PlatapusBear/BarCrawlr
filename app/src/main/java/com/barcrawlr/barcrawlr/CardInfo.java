@@ -1,6 +1,8 @@
 package com.barcrawlr.barcrawlr;
 
-public class CardInfo {
+import java.io.Serializable;
+
+public class CardInfo implements Serializable {
 
     private int drawableId;
     private String name;
