@@ -1,25 +1,16 @@
 package com.barcrawlr.barcrawlr;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import link.fls.swipestack.SwipeStack;
 
@@ -35,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private ArrayList<CardInfo> bars;
     private int currentPosition;
+    private LocationListener locationListener;
     static public final int LOCATION_REQUEST_CODE = 99;
 
 
@@ -56,16 +48,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }else{
             ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_FINE_LOCATION },LOCATION_REQUEST_CODE);
+
         }
         setCardStackAdapter();
 
-        /**{KEEP THIS MIGHT NEED IN FUTURE}
-         * {KEEP THIS MIGHT NEED IN FUTURE}
-           {KEEP THIS MIGHT NEED IN FUTURE}*/
-       /** final LocationListener locationListener = new LocationListener() {
+
+      final LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                location = location1;
+                location1 = location;
             }
 
             @Override
@@ -84,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-**/
+
 
         cardStack.setListener(new SwipeStack.SwipeStackListener() {
             @Override
@@ -155,7 +146,9 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST_CODE);
         } else {
 
+
             location1 = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+
         }
         bars.add(new CardInfo(R.drawable.ingersolltap, "Ingersoll Tap", distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$"));
         bars.add(new CardInfo(R.drawable.junipermoon, "Juniper Moon", "Distance Away","$$"));
@@ -183,4 +176,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-}
+
+
+    }
