@@ -92,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewSwipedToRight(int position) {
 
-               // Bundle extras = new Bundle();
-                //CardInfo bar = (CardInfo)bars.get(position);
-                //Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
-                //intent.putExtra("BARINFO",(Serializable)bar);
                 Bundle extras = new Bundle();
                 CardInfo bar = (CardInfo)bars.get(position);
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
@@ -106,11 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtras(extras);
                 startActivity(intent);
 
-                //extras.putString("NAME",cardAdapter.getItem(position).getName());
-                //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
-                //extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
-                //intent.putExtras(extras);
-                //startActivity(intent);
                 if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
                     currentPosition = 0;
