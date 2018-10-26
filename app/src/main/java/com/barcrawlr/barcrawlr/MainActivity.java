@@ -11,12 +11,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.accessibility.AccessibilityNodeInfo;
 
 import link.fls.swipestack.SwipeStack;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cardStack = (SwipeStack) findViewById(R.id.container);
-
-
         currentPosition = 0;
-
 
         locationManager = (LocationManager)this.getSystemService(LOCATION_SERVICE);
 
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private String distance(Double lat1, Double lon1, Double lat2, Double lon2) {
         Double theta = lon1 - lon2;
         Double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -119,8 +119,7 @@ public class MainActivity extends AppCompatActivity {
         dist = rad2deg(dist);
         dist = dist * 60 * 1.1515;
         String distanceCut = new DecimalFormat("#.00").format(dist);
-
-
+        
         return "Distance to Bar " + distanceCut + " Miles";
     }
 
@@ -146,7 +145,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        /*CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$");
+        /*CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","Distance to Bar 0.83 Miles","$");
+        bars.add(bar1);
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","Distance to Bar 0.56 Miles","$$");
+        bars.add(bar2);*/
+
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$");
         bars.add(bar1);
         CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$");
         bars.add(bar2);
@@ -155,14 +159,14 @@ public class MainActivity extends AppCompatActivity {
         CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$");
         bars.add(bar4);
         CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$");
-        bars.add(bar5);*/
+        bars.add(bar5);
 
-        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","hh","$");
-        bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","hh","$$");
-        bars.add(bar2);
-        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar", "hh","$$");
-        bars.add(bar3);
+       Collections.sort(bars, new Comparator<CardInfo>() {
+           @Override
+           public int compare(CardInfo o1, CardInfo o2) {
+               return o1.getLocation().compareTo(o2.getLocation());
+           }
+       });
 
         cardAdapter = new CardAdapter(this, bars);
         cardStack.setAdapter(cardAdapter);
@@ -183,7 +187,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
     }
