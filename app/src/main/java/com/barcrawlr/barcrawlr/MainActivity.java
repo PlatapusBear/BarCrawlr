@@ -31,15 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     private SwipeStack cardStack;
     private CardAdapter cardAdapter;
-    private Double Latitude;
-    private Double Longitude;
-
     private Location location1;
     private LocationManager locationManager;
-
     private ArrayList<CardInfo> bars;
-    private FusedLocationProviderClient mFusedLocationClient;
-
     private int currentPosition;
     static public final int LOCATION_REQUEST_CODE = 99;
 
@@ -65,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         }
         setCardStackAdapter();
 
-        final LocationListener locationListener = new LocationListener() {
+        /**{KEEP THIS MIGHT NEED IN FUTURE}
+         * {KEEP THIS MIGHT NEED IN FUTURE}
+           {KEEP THIS MIGHT NEED IN FUTURE}*/
+       /** final LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 location = location1;
@@ -87,12 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-
-        // lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
-
-
-
-
+**/
 
         cardStack.setListener(new SwipeStack.SwipeStackListener() {
             @Override
@@ -146,16 +138,11 @@ public class MainActivity extends AppCompatActivity {
         return "Distance to Bar " + distanceCut + " Miles";
     }
 
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    /*::	This function converts decimal degrees to radians						 :*/
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
     private static double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);
     }
 
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    /*::	This function converts radians to decimal degrees						 :*/
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
     private static double rad2deg(double rad) {
         return (rad * 180 / Math.PI);
     }
@@ -168,8 +155,7 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST_CODE);
         } else {
 
-            Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
-            location1 = location;
+            location1 = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
         }
         bars.add(new CardInfo(R.drawable.ingersolltap, "Ingersoll Tap", distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$"));
         bars.add(new CardInfo(R.drawable.junipermoon, "Juniper Moon", "Distance Away","$$"));
@@ -197,21 +183,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //@Override
-   /** public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case LOCATION_REQUEST_CODE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-                    locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 1000 * 60, 2, (LocationListener) this);
-                    Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
-                    location1 = location;
-                }
-            }
-        }
-    }**/
 }
