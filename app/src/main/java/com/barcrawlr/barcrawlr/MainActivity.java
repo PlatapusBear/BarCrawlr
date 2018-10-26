@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import link.fls.swipestack.SwipeStack;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -95,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
                 //CardInfo bar = (CardInfo)bars.get(position);
                 //Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
                 //intent.putExtra("BARINFO",(Serializable)bar);
+                Bundle extras = new Bundle();
+                CardInfo bar = (CardInfo)bars.get(position);
+                Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                intent.putExtra("BARINFO",(Serializable)bar);
+                extras.putString("NAME",cardAdapter.getItem(position).getName());
+                extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
+                extras.putString("PRICE",cardAdapter.getItem(position).getPrice());
+                intent.putExtras(extras);
+                startActivity(intent);
 
                 //extras.putString("NAME",cardAdapter.getItem(position).getName());
                 //extras.putString("LOCATION",cardAdapter.getItem(position).getLocation());
