@@ -1,10 +1,12 @@
 package com.barcrawlr.barcrawlr;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,9 +61,9 @@ LocationListener{
 
         }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+      //  SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        //        .findFragmentById(R.id.map);
+        //mapFragment.getMapAsync(this);
 
 
 
@@ -82,6 +84,10 @@ LocationListener{
         getNearbyPlacesData.execute(dataTransfer);
         Toast.makeText(MapsActivity.this, "Showing Nearby Bar", Toast.LENGTH_SHORT).show();
 
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("google.navigation:q=" + name + "," + "+Des+Moines+Iowa"));
+        startActivity(intent);
 
 
     }
