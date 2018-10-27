@@ -95,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
                 CardInfo bar = (CardInfo)bars.get(position);
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+                intent.putExtra("BarName", bar.getName());
                 intent.putExtra("BARINFO",(Serializable)bar);
+              //  intent.putExtra("BARINFO",(Serializable)bar);
                 startActivity(intent);
                 if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
