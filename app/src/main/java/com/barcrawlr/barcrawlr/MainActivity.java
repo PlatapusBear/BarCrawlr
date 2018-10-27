@@ -3,6 +3,8 @@ package com.barcrawlr.barcrawlr;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -13,8 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import io.realm.Realm;
 import link.fls.swipestack.SwipeStack;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -90,8 +94,26 @@ public class MainActivity extends AppCompatActivity {
                 currentPosition = position + 1;
             }
 
+            private Realm realm = Realm.getDefaultInstance();
+
             @Override
             public void onViewSwipedToRight(int position) {
+
+                final Achievement firstBar = realm.where(Achievement.class).equalTo("name", "First Bar").findFirst();
+                if(!firstBar.getAchieved()) {
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            firstBar.setAchieved(true);
+                            Bitmap image2 = BitmapFactory.decodeResource(getResources(), R.drawable.achievementcompleted);
+
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            image2.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            byte[] complete = stream.toByteArray();
+                            firstBar.setImage(complete);
+                        }
+                    });
+                }
 
                 CardInfo bar = (CardInfo)bars.get(position);
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
