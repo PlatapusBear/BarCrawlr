@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import io.realm.Realm;
 import link.fls.swipestack.SwipeStack;
@@ -219,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         bars.add(bar2);
         CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distanceTo(location1, starBar, 41.585998, -93.655039),"$$");
         bars.add(bar3);
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distanceTo(location1, zimms, 41.585880, -93.660528),"$");
         bars.add(bar4);
         CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location1, wellmans, 41.5857186, -93.6575507),"$");
 >>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
