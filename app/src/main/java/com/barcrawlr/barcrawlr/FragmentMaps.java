@@ -29,7 +29,7 @@ public class FragmentMaps extends Fragment {
         MapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String bar= getActivity().getIntent().getExtras().getString("BarName");
+               String bar= getActivity().getIntent().getExtras().getString("BAR_NAME");
 
 
                 String[] parts = bar.split(" ");

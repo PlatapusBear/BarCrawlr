@@ -4,33 +4,39 @@
     android:layout_height="match_parent"
     android:gravity="top">
     <TextView
-        android:id="@+id/AddressHardCode"
+        android:id="@+id/bars_short_desc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Address:" />
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/roboto_medium" />
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"  />
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         />
     <TextView
-        android:id="@+id/barInfoMore"
+        android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_medium" />
+    <!--<TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"  />-->
+    <TextView
+        android:id="@+id/prices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:fontFamily="@font/roboto_medium"
-        android:text="more bar info down here" />
+        />
+
+    <TextView
+        android:id="@+id/bars_long_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        />
 </LinearLayout>
