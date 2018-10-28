@@ -10,15 +10,18 @@ public class CardInfo implements Serializable {
     private String price;
     private String longDescription;
     private String shortDescription;
+    private String address;
 
 
     public CardInfo(int drawableId, String name, String location, String price, String longDescription, String shortDescription) {
+    public CardInfo(int drawableId, String name, String location, String price, String longDescription, String shortDescription, String address) {
         this.drawableId = drawableId;
         this.name = name;
         this.location = location;
         this.price = price;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
+        this.address = address;
 
     }
 
@@ -62,4 +65,11 @@ public class CardInfo implements Serializable {
         this.shortDescription = shortDescription;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
