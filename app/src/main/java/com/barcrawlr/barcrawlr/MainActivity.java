@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SwipeStack cardStack;
     private CardAdapter cardAdapter;
-    private Location location1;
+    private Location location;
     private LocationManager locationManager;
     private ArrayList<CardInfo> bars;
     private int currentPosition;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
       final LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                location1 = location;
+                location = location;
             }
 
             @Override
@@ -171,10 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String distanceTo(Location user, Location bar, Double lat, Double longi){
-        Location bars = new Location(bar);
-        bars.setLatitude(lat);
-        bars.setLongitude(longi);
-        Double dist = user.distanceTo(bars)/ 1000 * 0.621371;
+        bar.setLatitude(lat);
+        bar.setLongitude(longi);
+        Double dist = user.distanceTo(bar)/ 1000 * 0.621371;
         String distanceCut = new DecimalFormat("#.00").format(dist);
         return "Distance to Bar: Approximately " + distanceCut + " Miles";
     }
@@ -189,26 +188,26 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
 
-            location1 = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+            location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
 
         }
 
-        Location ingersollLocation1 = new Location("");
-        Location juniperMoon1 = new Location("");
-        Location starBar = new Location("");
-        Location zimms = new Location("");
-        Location wellmans = new Location("");
+        Location ingersollLocation = new Location("");
+        Location juniperMoonLocation = new Location("");
+        Location starBarLocation = new Location("");
+        Location zimmsLocation = new Location("");
+        Location wellmansLocation = new Location("");
 
 
-        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location1, ingersollLocation1, 41.5860, -93.6558),"- $", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.", "Address: 2837 Ingersoll Ave, Des Moines, IA 50312");
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location, ingersollLocation, 41.5860, -93.6558),"- $", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.", "Address: 2837 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distanceTo(location1, juniperMoon1, 41.574349, -93.610430),"- $$", "Juniper Moon is the place to go when looking for a classy night out. Spend the night in a Great Gatsby-esque environment with drinks to choose form such as Moscow Mules, Dai Dai My Darling, and Manhattans. This intimate cocktail lounge is the perfect place to get romantic with a significant other or to meet new friends over a bottle of wine. Juniper Moon is open from 4:00 PM-2:00 AM.", "Des Moines' premier cocktail bar", "Address: 2005 Ingersoll Ave, Des Moines, IA 50309");
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distanceTo(location, juniperMoonLocation, 41.574349, -93.610430),"- $$", "Juniper Moon is the place to go when looking for a classy night out. Spend the night in a Great Gatsby-esque environment with drinks to choose form such as Moscow Mules, Dai Dai My Darling, and Manhattans. This intimate cocktail lounge is the perfect place to get romantic with a significant other or to meet new friends over a bottle of wine. Juniper Moon is open from 4:00 PM-2:00 AM.", "Des Moines' premier cocktail bar", "Address: 2005 Ingersoll Ave, Des Moines, IA 50309");
         bars.add(bar2);
-        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distanceTo(location1, starBar, 41.585998, -93.655039),"- $$", "Looking to share some dinner and drinks over the sound of live music? If so, Star Bar has got you covered. This relaxed bar is a go-to for any after work drinks or a night on the town with friends. Serving everything from brunch and burgers to martinis and beer--Star Bar has something for everyone and every occasion. Star Bar is open from 11:00 AM-2:00 AM.", "A casual establishment serving all from brunch until bar close", "Address: 2811 Ingersoll Ave, Des Moines, IA 50312");
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distanceTo(location, starBarLocation, 41.585998, -93.655039),"- $$", "Looking to share some dinner and drinks over the sound of live music? If so, Star Bar has got you covered. This relaxed bar is a go-to for any after work drinks or a night on the town with friends. Serving everything from brunch and burgers to martinis and beer--Star Bar has something for everyone and every occasion. Star Bar is open from 11:00 AM-2:00 AM.", "A casual establishment serving all from brunch until bar close", "Address: 2811 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar3);
-        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distanceTo(location1, zimms, 41.585880, -93.660528),"- $", "Zimm's Food and Spirits is where you meet up with buddies after work and end up staying all night talking, drinking, and watching whatever game is on TV. Serving lunch and dinner in addition to drinks, this bar is also great for a fun family night out! Zimm's Food and Spirits is open 11:00 AM-2:00 AM.", "Family-friendly environment for lunch, dinner, and drinks", "Address: 3124 Ingersoll Ave, Des Moines, IA 50312");
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distanceTo(location, zimmsLocation, 41.585880, -93.660528),"- $", "Zimm's Food and Spirits is where you meet up with buddies after work and end up staying all night talking, drinking, and watching whatever game is on TV. Serving lunch and dinner in addition to drinks, this bar is also great for a fun family night out! Zimm's Food and Spirits is open 11:00 AM-2:00 AM.", "Family-friendly environment for lunch, dinner, and drinks", "Address: 3124 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar4);
-        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location1, wellmans, 41.584682, -93.610114),"- $", "By day, Wellman's Pub is the sports bar you want to spend every game day at. As the day goes on, the pub seamlessly transitions into the center of nightlife on Ingersoll. From breakfast and coffee to dinner and cocktails, Wellman's has it all! Wellman's Pub is open 11:00 AM-2:00 AM.", "The place to be for everything from family dinner a night out with friends", "Address: 2920 Ingersoll Ave, Des Moines, IA 50312");
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location, wellmansLocation, 41.584682, -93.610114),"- $", "By day, Wellman's Pub is the sports bar you want to spend every game day at. As the day goes on, the pub seamlessly transitions into the center of nightlife on Ingersoll. From breakfast and coffee to dinner and cocktails, Wellman's has it all! Wellman's Pub is open 11:00 AM-2:00 AM.", "The place to be for everything from family dinner a night out with friends", "Address: 2920 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar5);
 
 
