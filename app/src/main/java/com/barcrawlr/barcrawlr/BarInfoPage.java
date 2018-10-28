@@ -7,6 +7,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ public class BarInfoPage extends AppCompatActivity {
         String priceString = getIntent().getExtras().getString("BAR_PRICE");
         String locationString = getIntent().getExtras().getString("BAR_LOCATION");
         int ImageNum = getIntent().getExtras().getInt("drawableID");
+        String addressString = getIntent().getExtras().getString("ADDRESS");
 
         Bundle info_data = new Bundle();//create bundle instance
         info_data.putString("barName", barName);//put string to pass with a key value
@@ -37,6 +40,7 @@ public class BarInfoPage extends AppCompatActivity {
         info_data.putString("longDesc", longDesc);
         info_data.putString("priceString", priceString);
         info_data.putString("locationString", locationString);
+        info_data.putString("AddressString", addressString);
         Bundle photo_data = new Bundle();
         photo_data.putInt("ImageNum", ImageNum);
 
