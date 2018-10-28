@@ -12,8 +12,6 @@ public class CardInfo implements Serializable {
     private String shortDescription;
     private String address;
 
-
-    public CardInfo(int drawableId, String name, String location, String price, String longDescription, String shortDescription) {
     public CardInfo(int drawableId, String name, String location, String price, String longDescription, String shortDescription, String address) {
         this.drawableId = drawableId;
         this.name = name;
