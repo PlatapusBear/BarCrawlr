@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         bars.setLongitude(longi);
         Double dist = user.distanceTo(bars)/ 1000 * 0.621371;
         String distanceCut = new DecimalFormat("#.00").format(dist);
-        return "Distance to Bar " + distanceCut + " Miles";
+        return "Distance to Bar: Approximately " + distanceCut + " Miles";
     }
 
 
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-      
+
 
         Location ingersollLocation1 = new Location("");
         Location juniperMoon1 = new Location("");
