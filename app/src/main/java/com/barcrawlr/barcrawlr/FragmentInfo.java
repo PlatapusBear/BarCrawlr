@@ -19,6 +19,7 @@ public class FragmentInfo extends Fragment {
     private TextView barShort;
     private TextView barLong;
     private TextView barPrice;
+    private TextView address;
 
     public FragmentInfo(){
     }
@@ -32,6 +33,7 @@ public class FragmentInfo extends Fragment {
         barShort = (TextView) view.findViewById(R.id.bars_short_desc);//Find textview Id
         barLong = (TextView) view.findViewById(R.id.bars_long_desc);//Find textview Id
         barPrice = (TextView) view.findViewById(R.id.prices);//Find textview Id
+        address = (TextView) view.findViewById(R.id.address);
 
         bundle = this.getArguments();
         //Get Argument that passed from activity in key value
@@ -40,12 +42,14 @@ public class FragmentInfo extends Fragment {
         String bars_long = bundle.getString("longDesc");
         String bars_location = bundle.getString("locationString");
         String bars_price = bundle.getString("priceString");
+        String addresser = bundle.getString("AddressString");
 
         barName.setText(bars_name);//set string over textview
         barLocation.setText(bars_location);
         barShort.setText(bars_short);
         barLong.setText(bars_long);
         barPrice.setText(bars_price);
+        address.setText(addresser);
 
         return view;
     }

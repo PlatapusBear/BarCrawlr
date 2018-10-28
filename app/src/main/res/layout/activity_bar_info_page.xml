@@ -53,7 +53,8 @@
         app:tabMode="fixed"
         android:id="@+id/tablayout_id"
         app:tabTextColor="@color/text_color_primary"
-        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabBackground="@color/colorPrimary"
+        app:tabIndicatorColor="@color/colorPrimaryDark"
         android:background="@color/background_material_light"/>
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"

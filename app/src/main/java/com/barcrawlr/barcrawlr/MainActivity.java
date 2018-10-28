@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     static public final int LOCATION_REQUEST_CODE = 99;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
+<<<<<<< HEAD
                 Bundle bundle = new Bundle();
                 bundle.putString("BAR_NAME", bar.getName());
                 bundle.putString("BAR_LOCATION", bar.getLocation());
@@ -134,9 +136,15 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("BAR_SHORT", bar.getShortDescription());
                 bundle.putString("BAR_LONG", bar.getLongDescription());
                 bundle.putInt("drawableID", bar.getDrawableId());
+                bundle.putString("ADDRESS", bar.getAddress());
 
                 //Add the bundle to the intent
                 intent.putExtras(bundle);
+=======
+                intent.putExtra("BarName", bar.getName());
+                intent.putExtra("BARINFO",(Serializable)bar);
+
+>>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
                 startActivity(intent);
 
                 //intent.putExtra("BarName", bar.getName());
@@ -158,25 +166,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String distance(Double lat1, Double lon1, Double lat2, Double lon2) {
-        Double theta = lon1 - lon2;
-        Double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
+
+
+
+
+    private String distanceTo(Location user, Location bar, Double lat, Double longi){
+        Location bars = new Location(bar);
+        bars.setLatitude(lat);
+        bars.setLongitude(longi);
+        Double dist = user.distanceTo(bars)/ 1000 * 0.621371;
         String distanceCut = new DecimalFormat("#.00").format(dist);
-        
-        return "Distance to Bar " + distanceCut + " Miles";
+        return "Distance to Bar: Approximately " + distanceCut + " Miles";
     }
 
-
-    private static double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    private static double rad2deg(double rad) {
-        return (rad * 180 / Math.PI);
-    }
 
     private void setCardStackAdapter() {
         bars = new ArrayList<>();
@@ -191,20 +193,35 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        /*CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","Distance to Bar 0.83 Miles","$");
-        bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","Distance to Bar 0.56 Miles","$$");
-        bars.add(bar2);*/
 
-        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.");
+<<<<<<< HEAD
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"- $", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.", "Address: 2837 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$", "Juniper Moon is the place to go when looking for a classy night out. Spend the night in a Great Gatsby-esque environment with drinks to choose form such as Moscow Mules, Dai Dai My Darling, and Manhattans. This intimate cocktail lounge is the perfect place to get romantic with a significant other or to meet new friends over a bottle of wine. Juniper Moon is open from 4:00 PM-2:00 AM.", "Des Moines' premier cocktail bar");
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"- $$", "Juniper Moon is the place to go when looking for a classy night out. Spend the night in a Great Gatsby-esque environment with drinks to choose form such as Moscow Mules, Dai Dai My Darling, and Manhattans. This intimate cocktail lounge is the perfect place to get romantic with a significant other or to meet new friends over a bottle of wine. Juniper Moon is open from 4:00 PM-2:00 AM.", "Des Moines' premier cocktail bar", "Address: 2005 Ingersoll Ave, Des Moines, IA 50309");
         bars.add(bar2);
-        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"$$", "Looking to share some dinner and drinks over the sound of live music? If so, Star Bar has got you covered. This relaxed bar is a go-to for any after work drinks or a night on the town with friends. Serving everything from brunch and burgers to martinis and beer--Star Bar has something for everyone and every occasion. Star Bar is open from 11:00 AM-2:00 AM.", "A casual establishment serving all from brunch until bar close");
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"- $$", "Looking to share some dinner and drinks over the sound of live music? If so, Star Bar has got you covered. This relaxed bar is a go-to for any after work drinks or a night on the town with friends. Serving everything from brunch and burgers to martinis and beer--Star Bar has something for everyone and every occasion. Star Bar is open from 11:00 AM-2:00 AM.", "A casual establishment serving all from brunch until bar close", "Address: 2811 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar3);
-        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$", "Zimm's Food and Spirits is where you meet up with buddies after work and end up staying all night talking, drinking, and watching whatever game is on TV. Serving lunch and dinner in addition to drinks, this bar is also great for a fun family night out! Zimm's Food and Spirits is open 11:00 AM-2:00 AM.", "Family-friendly environment for lunch, dinner, and drinks");
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"- $", "Zimm's Food and Spirits is where you meet up with buddies after work and end up staying all night talking, drinking, and watching whatever game is on TV. Serving lunch and dinner in addition to drinks, this bar is also great for a fun family night out! Zimm's Food and Spirits is open 11:00 AM-2:00 AM.", "Family-friendly environment for lunch, dinner, and drinks", "Address: 3124 Ingersoll Ave, Des Moines, IA 50312");
         bars.add(bar4);
-        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$", "By day, Wellman's Pub is the sports bar you want to spend every game day at. As the day goes on, the pub seamlessly transitions into the center of nightlife on Ingersoll. From breakfast and coffee to dinner and cocktails, Wellman's has it all! Wellman's Pub is open 11:00 AM-2:00 AM.", "The place to be for everything from family dinner a night out with friends");
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"- $", "By day, Wellman's Pub is the sports bar you want to spend every game day at. As the day goes on, the pub seamlessly transitions into the center of nightlife on Ingersoll. From breakfast and coffee to dinner and cocktails, Wellman's has it all! Wellman's Pub is open 11:00 AM-2:00 AM.", "The place to be for everything from family dinner a night out with friends", "Address: 2920 Ingersoll Ave, Des Moines, IA 50312");
+=======
+
+        Location ingersollLocation1 = new Location("");
+        Location juniperMoon1 = new Location("");
+        Location starBar = new Location("");
+        Location zimms = new Location("");
+        Location wellmans = new Location("");
+
+
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location1, ingersollLocation1,41.5860 , -93.6558),"$");
+        bars.add(bar1);
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distanceTo(location1, juniperMoon1, 41.58599330000001, -93.64405720000002),"$$");
+        bars.add(bar2);
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distanceTo(location1, starBar, 41.585998, -93.655039),"$$");
+        bars.add(bar3);
+        bars.add(bar4);
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location1, wellmans, 41.5857186, -93.6575507),"$");
+>>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
         bars.add(bar5);
 
        Collections.sort(bars, new Comparator<CardInfo>() {
