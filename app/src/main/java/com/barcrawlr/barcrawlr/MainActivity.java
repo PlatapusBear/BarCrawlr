@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import io.realm.Realm;
 import link.fls.swipestack.SwipeStack;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private int currentPosition;
     private LocationListener locationListener;
     static public final int LOCATION_REQUEST_CODE = 99;
+
 
 
     @Override
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
                 intent.putExtra("BarName", bar.getName());
                 intent.putExtra("BARINFO",(Serializable)bar);
-              //  intent.putExtra("BARINFO",(Serializable)bar);
+
                 startActivity(intent);
                 if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
@@ -146,25 +150,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String distance(Double lat1, Double lon1, Double lat2, Double lon2) {
-        Double theta = lon1 - lon2;
-        Double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
+
+
+
+
+    private String distanceTo(Location user, Location bar, Double lat, Double longi){
+        Location bars = new Location(bar);
+        bars.setLatitude(lat);
+        bars.setLongitude(longi);
+        Double dist = user.distanceTo(bars)/ 1000 * 0.621371;
         String distanceCut = new DecimalFormat("#.00").format(dist);
-        
         return "Distance to Bar " + distanceCut + " Miles";
     }
 
-
-    private static double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    private static double rad2deg(double rad) {
-        return (rad * 180 / Math.PI);
-    }
 
     private void setCardStackAdapter() {
         bars = new ArrayList<>();
@@ -179,20 +177,24 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        /*CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap","Distance to Bar 0.83 Miles","$");
-        bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","Distance to Bar 0.56 Miles","$$");
-        bars.add(bar2);*/
+      
 
-        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$");
+        Location ingersollLocation1 = new Location("");
+        Location juniperMoon1 = new Location("");
+        Location starBar = new Location("");
+        Location zimms = new Location("");
+        Location wellmans = new Location("");
+
+
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location1, ingersollLocation1,41.5860 , -93.6558),"$");
         bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$");
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distanceTo(location1, juniperMoon1, 41.58599330000001, -93.64405720000002),"$$");
         bars.add(bar2);
-        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"$$");
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distanceTo(location1, starBar, 41.585998, -93.655039),"$$");
         bars.add(bar3);
-        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$");
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distanceTo(location1, zimms, 41.585880, -93.660528),"$");
         bars.add(bar4);
-        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$");
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location1, wellmans, 41.5857186, -93.6575507),"$");
         bars.add(bar5);
 
        Collections.sort(bars, new Comparator<CardInfo>() {
