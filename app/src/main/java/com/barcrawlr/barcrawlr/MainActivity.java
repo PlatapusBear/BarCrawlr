@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("BarName", bar.getName());
                 intent.putExtra("BARINFO",(Serializable)bar);
 
+<<<<<<< HEAD
+>>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
+=======
 >>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
                 startActivity(intent);
 
@@ -196,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"- $", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.", "Address: 2837 Ingersoll Ave, Des Moines, IA 50312");
@@ -216,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
         Location wellmans = new Location("");
 
 
+>>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
         CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location1, ingersollLocation1,41.5860 , -93.6558),"$");
         bars.add(bar1);
         CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distanceTo(location1, juniperMoon1, 41.58599330000001, -93.64405720000002),"$$");
@@ -225,6 +230,9 @@ public class MainActivity extends AppCompatActivity {
         CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distanceTo(location1, zimms, 41.585880, -93.660528),"$");
         bars.add(bar4);
         CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distanceTo(location1, wellmans, 41.5857186, -93.6575507),"$");
+<<<<<<< HEAD
+>>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
+=======
 >>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
         bars.add(bar5);
 
