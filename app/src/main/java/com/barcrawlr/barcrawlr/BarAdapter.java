@@ -8,11 +8,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
+
 public class BarAdapter extends  RecyclerView.Adapter<BarAdapter.BarViewHolder>{
     private Context context;
-    private ArrayList<Bar> bars;
+    private RealmResults<Bar> bars;
 
-    public BarAdapter(Context context, ArrayList<Bar> dataset){
+    public BarAdapter(Context context, RealmResults<Bar> dataset){
         this.context = context;
         this.bars = dataset;
     }
@@ -42,7 +44,7 @@ public class BarAdapter extends  RecyclerView.Adapter<BarAdapter.BarViewHolder>{
 
     @Override
     public void onBindViewHolder(BarViewHolder holder, int position){
-        holder.nameView.setText(bars.get(position).getName());
+        holder.nameView.setText(bars.get(position).getBarName());
         if(bars.get(position).haveAttended()){
             holder.attendView.setText("You've been here");
         }
