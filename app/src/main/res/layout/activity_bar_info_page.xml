@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
             <ImageView
-                android:id="@+id/IMAGE"
+                android:id="@+id/main_image"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
                 android:layout_alignParentLeft="true"
@@ -28,9 +28,9 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/starbar" />
+                />
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/mainline_bar_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -40,7 +40,6 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:lineSpacingExtra="12sp"
-                android:text="Starbar"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="32sp"

@@ -8,12 +8,17 @@ public class CardInfo implements Serializable {
     private String name;
     private String location;
     private String price;
+    private String longDescription;
+    private String shortDescription;
 
-    public CardInfo(int drawableId, String name, String location, String price) {
+
+    public CardInfo(int drawableId, String name, String location, String price, String longDescription, String shortDescription) {
         this.drawableId = drawableId;
         this.name = name;
         this.location = location;
         this.price = price;
+        this.longDescription = longDescription;
+        this.shortDescription = shortDescription;
 
     }
 
@@ -41,5 +46,20 @@ public class CardInfo implements Serializable {
 
     public void setPrice(String price) { this.price = price; }
 
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
 
 }

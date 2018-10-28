@@ -127,10 +127,22 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
-                intent.putExtra("BarName", bar.getName());
-                intent.putExtra("BARINFO",(Serializable)bar);
-              //  intent.putExtra("BARINFO",(Serializable)bar);
+                Bundle bundle = new Bundle();
+                bundle.putString("BAR_NAME", bar.getName());
+                bundle.putString("BAR_LOCATION", bar.getLocation());
+                bundle.putString("BAR_PRICE", bar.getPrice());
+                bundle.putString("BAR_SHORT", bar.getShortDescription());
+                bundle.putString("BAR_LONG", bar.getLongDescription());
+                bundle.putInt("drawableID", bar.getDrawableId());
+
+                //Add the bundle to the intent
+                intent.putExtras(bundle);
                 startActivity(intent);
+
+                //intent.putExtra("BarName", bar.getName());
+                //intent.putExtra("BARINFO",(Serializable)bar);
+                //intent.putExtra("BARINFO",(Serializable)bar);
+                //startActivity(intent);
                 if (currentPosition == (bars.size() - 1)) {
                     cardStack.resetStack();
                     currentPosition = 0;
@@ -184,15 +196,15 @@ public class MainActivity extends AppCompatActivity {
         CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon","Distance to Bar 0.56 Miles","$$");
         bars.add(bar2);*/
 
-        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$");
+        CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distance(location1.getLatitude(), location1.getLongitude(), 41.5860, -93.6558),"$", "Grab your friends for a fun-filled night at Ingersoll Tap! Stop by the pub and try the large selection of wells, domestics, and wines while snacking on the complementary popcorn. Located in the heart of Ingersoll, Ingersoll Tap is open from 2:00 PM-2:00 AM. Be on the lookout for trivia nights!", "The perfect place to share a craft beer with some friends.");
         bars.add(bar1);
-        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$");
+        CardInfo bar2 = new CardInfo(R.drawable.junipermoon,"Juniper Moon",distance(location1.getLatitude(), location1.getLongitude(), 41.574349, -93.610430),"$$", "Juniper Moon is the place to go when looking for a classy night out. Spend the night in a Great Gatsby-esque environment with drinks to choose form such as Moscow Mules, Dai Dai My Darling, and Manhattans. This intimate cocktail lounge is the perfect place to get romantic with a significant other or to meet new friends over a bottle of wine. Juniper Moon is open from 4:00 PM-2:00 AM.", "Des Moines' premier cocktail bar");
         bars.add(bar2);
-        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"$$");
+        CardInfo bar3 = new CardInfo(R.drawable.starbar,"Star Bar",distance(location1.getLatitude(), location1.getLongitude(), 41.585998, -93.655039),"$$", "Looking to share some dinner and drinks over the sound of live music? If so, Star Bar has got you covered. This relaxed bar is a go-to for any after work drinks or a night on the town with friends. Serving everything from brunch and burgers to martinis and beer--Star Bar has something for everyone and every occasion. Star Bar is open from 11:00 AM-2:00 AM.", "A casual establishment serving all from brunch until bar close");
         bars.add(bar3);
-        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$");
+        CardInfo bar4 = new CardInfo(R.drawable.zimms,"Zimm's Food and Spirits",distance(location1.getLatitude(), location1.getLongitude(), 41.585880, -93.660528),"$", "Zimm's Food and Spirits is where you meet up with buddies after work and end up staying all night talking, drinking, and watching whatever game is on TV. Serving lunch and dinner in addition to drinks, this bar is also great for a fun family night out! Zimm's Food and Spirits is open 11:00 AM-2:00 AM.", "Family-friendly environment for lunch, dinner, and drinks");
         bars.add(bar4);
-        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$");
+        CardInfo bar5 = new CardInfo(R.drawable.wellmanspub,"Wellman's Pub",distance(location1.getLatitude(), location1.getLongitude(), 41.584682, -93.610114),"$", "By day, Wellman's Pub is the sports bar you want to spend every game day at. As the day goes on, the pub seamlessly transitions into the center of nightlife on Ingersoll. From breakfast and coffee to dinner and cocktails, Wellman's has it all! Wellman's Pub is open 11:00 AM-2:00 AM.", "The place to be for everything from family dinner a night out with friends");
         bars.add(bar5);
 
        Collections.sort(bars, new Comparator<CardInfo>() {
