@@ -220,6 +220,16 @@ public class MainActivity extends AppCompatActivity {
         Location wellmans = new Location("");
 
 
+=======
+
+
+        Location ingersollLocation1 = new Location("");
+        Location juniperMoon1 = new Location("");
+        Location starBar = new Location("");
+        Location zimms = new Location("");
+        Location wellmans = new Location("");
+
+
 >>>>>>> 0b94b4196b457a1d79d14c8775964e78a8fb000d
         CardInfo bar1 = new CardInfo(R.drawable.ingersolltap,"Ingersoll Tap",distanceTo(location1, ingersollLocation1,41.5860 , -93.6558),"$");
         bars.add(bar1);
