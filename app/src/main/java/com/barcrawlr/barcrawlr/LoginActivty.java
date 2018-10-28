@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 import java.io.ByteArrayOutputStream;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class LoginActivty extends AppCompatActivity {
@@ -36,9 +37,14 @@ public class LoginActivty extends AppCompatActivity {
 
         Realm realm = Realm.getDefaultInstance();
         final RealmResults<Achievement> achievements = realm.where(Achievement.class).findAll();
+        final RealmResults<Bar> bars = realm.where(Bar.class).findAll();
 
         if(achievements.size()==0){
             populateAchievements();
+        }
+
+        if(bars.size()==0){
+            populateBars();
         }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +122,40 @@ public class LoginActivty extends AppCompatActivity {
                 realm.copyToRealmOrUpdate(achievement4);
                 realm.copyToRealmOrUpdate(achievement5);
                 realm.copyToRealmOrUpdate(achievement6);
+            }
+        });
+    }
+
+    public void populateBars(){
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Bar bar1 = new Bar();
+                bar1.setBarName("Ingersoll Tap");
+                bar1.setAttended(false);
+
+                Bar bar2 = new Bar();
+                bar2.setBarName("Juniper Moon");
+                bar2.setAttended(false);
+
+                Bar bar3 = new Bar();
+                bar3.setBarName("Star Bar");
+                bar3.setAttended(false);
+
+                Bar bar4 = new Bar();
+                bar4.setBarName("Wellman's Pub");
+                bar4.setAttended(false);
+
+                Bar bar5 = new Bar();
+                bar5.setBarName("Zimm's Food and Spirits");
+                bar5.setAttended(false);
+
+                realm.copyToRealmOrUpdate(bar1);
+                realm.copyToRealmOrUpdate(bar2);
+                realm.copyToRealmOrUpdate(bar3);
+                realm.copyToRealmOrUpdate(bar4);
+                realm.copyToRealmOrUpdate(bar5);
             }
         });
     }

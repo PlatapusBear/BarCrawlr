@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
 import io.realm.Realm;
 import link.fls.swipestack.SwipeStack;
@@ -113,9 +114,18 @@ public class MainActivity extends AppCompatActivity {
                             firstBar.setImage(complete);
                         }
                     });
+                    Toast.makeText(MainActivity.this, "You\'ve achieved: First Bar", Toast.LENGTH_LONG).show();
                 }
 
                 CardInfo bar = (CardInfo)bars.get(position);
+                final Bar selectedBar = realm.where(Bar.class).equalTo("barName", bar.getName()).findFirst();
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        selectedBar.setAttended(true);
+                    }
+                });
+
                 Intent intent = new Intent(MainActivity.this,BarInfoPage.class);
                 intent.putExtra("BarName", bar.getName());
                 intent.putExtra("BARINFO",(Serializable)bar);

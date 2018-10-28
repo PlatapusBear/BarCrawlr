@@ -1,19 +1,23 @@
 package com.barcrawlr.barcrawlr;
 
-public class Bar {
-    private String name;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Bar extends RealmObject{
+    @PrimaryKey
+    private String barName;
     private boolean attended;
 
     public boolean haveAttended() {
         return attended;
     }
 
-    public String getName() {
-        return name;
+    public String getBarName() {
+        return barName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBarName(String barName) {
+        this.barName = barName;
     }
 
     public void setAttended(boolean attended) {

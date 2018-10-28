@@ -72,7 +72,7 @@ public class FragmentMaps extends Fragment {
 
                 Intent intent = new Intent(getContext(), MapsActivity.class);
 
-                intent.putExtra("Maps",(Serializable)bar.getName());
+                intent.putExtra("Maps",(Serializable)bar.getBarName());
                 startActivity(intent);
             }
         });
