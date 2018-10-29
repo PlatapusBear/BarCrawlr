@@ -1,9 +1,12 @@
 package com.barcrawlr.barcrawlr;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ public class BarAdapter extends  RecyclerView.Adapter<BarAdapter.BarViewHolder>{
 
     public static class BarViewHolder extends RecyclerView.ViewHolder{
         public TextView nameView;
-        public TextView attendView;
+        public ImageView attendView;
 
         public BarViewHolder(View v) {
             super(v);
@@ -46,10 +49,12 @@ public class BarAdapter extends  RecyclerView.Adapter<BarAdapter.BarViewHolder>{
     public void onBindViewHolder(BarViewHolder holder, int position){
         holder.nameView.setText(bars.get(position).getBarName());
         if(bars.get(position).haveAttended()){
-            holder.attendView.setText("You've been here");
+            Bitmap achieved = BitmapFactory.decodeResource(context.getResources(), R.drawable.checkbox);
+            holder.attendView.setImageBitmap(achieved);
         }
         else{
-            holder.attendView.setText("You haven't been here");
+            Bitmap notAchieved = BitmapFactory.decodeResource(context.getResources(), R.drawable.emptybox);
+            holder.attendView.setImageBitmap(notAchieved);
         }
     }
 }

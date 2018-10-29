@@ -22,15 +22,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <ImageView
         android:id="@+id/attended"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_width="69dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="attended"
-        android:textColor="@color/text_color_primary"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
 </android.support.constraint.ConstraintLayout>
