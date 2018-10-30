@@ -38,44 +38,13 @@ public class FragmentMaps extends Fragment {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                         Uri.parse("google.navigation:q=" + parts[0] + "+" + parts[1] + "+Des+Moines+Iowa"));
                 startActivity(intent);
-                /** Intent intent = new Intent(getActivity(), MapsActivity.class);
-
-                 intent.putExtra("Maps",(Serializable)"Ingersol+Tap");
-                 startActivity(intent);**/
+                
             }
         });
-        /** Bar bar = new Bar();
-
-         Intent intent = new Intent(getContext(), MapsActivity.class);
-
-         intent.putExtra("Maps",(Serializable)bar.getName());
-         startActivity(intent);**/
         return view;
 
-
-        //MapButton.setOnClickListener(new View.OnClickListener()) {
-        //@Override
-        //public void onClick(View view) {
-        //  Intent intent = new Intent(view.getContext(), BarMaps.class);
-        //intent.putExtra("Bar", "location");
-        //startActivity(intent);
-        //  };
     }
 
-    public void onClickListener()
-
-    {
-        MapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bar bar = new Bar();
-
-                Intent intent = new Intent(getContext(), MapsActivity.class);
-
-                intent.putExtra("Maps",(Serializable)bar.getBarName());
-                startActivity(intent);
-            }
-        });
 
     }
-}
+
